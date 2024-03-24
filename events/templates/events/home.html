@@ -1,0 +1,11 @@
+
+
+{% block content %}
+<h1>welcome to homepage</h1>
+<h2>
+    {% for event in events %}
+    <div>{{ event.id}} -- <a href="{% url 'event' event.id %}">{{event.title}]</a></div>
+    {% endfor %}
+</h2>
+
+{% endblock %}
