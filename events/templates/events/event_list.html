@@ -1,9 +1,11 @@
 {% block content %}
-<h1>Welcome Events Page</h1>
-<a href="{% url 'create_event' %}" style="font-size:24px;">Create Event</a><br><br><hr>
+<div style="margin-left:400px;">
+    <h1>Welcome Events Page</h1>
+<a href="{% url 'create_event' %}" style="font-size:24px; margin-left:100px; ">Create Event</a><br><br>
+</div>
 
 {% for event in events %}
-    <div style="background-color: pink; width: 500px; padding-left:20px;" >
+    <div style="background-color: pink; width: 700px; padding-left:20px; margin:0 auto;" >
         <small style=" font-size:22px;">{{ event.title }}</small><br>
         <small style=" font-size:18px;">{{ event.description}}</small><br>
         <small style=" font-size:18px;">{{ event.location}}</small><br>
