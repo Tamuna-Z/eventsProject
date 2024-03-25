@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth.models import user
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.context_processors import request
 from django.views.generic import View, ListView, CreateView, RedirectView, UpdateView, DeleteView
@@ -83,14 +84,14 @@ def authenticate(username, password):
 
 class LoginView(View):
     template_name = 'events/login_register.html'
-    form_class = CustomAuthenticationForm  # Use your custom authentication form
+    form_class = CustomAuthenticationForm
 
     def get(self, request):
-        form = self.form_class()  # Instantiate the form
+        form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-        form = self.form_class(request.POST)  # Bind POST data to the form
+        form = self.form_class(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -98,7 +99,6 @@ class LoginView(View):
             if user is not None:
                 login(request, user)
                 return redirect('event_list')
-        # If authentication fails or form is invalid, render the login page again with error message
         return render(request, self.template_name, {'form': form, 'error_message': 'Invalid username or password'})
 class UserLogoutView(LoginRequiredMixin, RedirectView):
     url = reverse_lazy('login')

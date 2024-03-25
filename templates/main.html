@@ -4,7 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body
+   {% include 'navbar.html' %}
+   {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li >{{ message}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+
+{% block content %}
+{% endblock  %}
+
 
 </body>
 </html>
