@@ -1,0 +1,11 @@
+{% block content %}
+<h1>User Login</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Render form fields -->
+    <button type="submit">Login</button>
+</form>
+{% if error_message %}
+<p>{{ error_message }}</p>  <!-- Display error message if authentication fails -->
+{% endif %}
+{% endblock content %}
