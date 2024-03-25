@@ -1,3 +1,9 @@
 
 <a href="{% url 'event_list' %}">Events</a><br>
-<a href="{% url 'login_page' %}"  style=" margin-rigth:400px;" >log in</a>
+{% if request.user.is_authenticated %}
+<p>{{ request.user}}</p>
+
+<a href="{% url 'logout' %}" style=" margin-right:300px;" >log out</a>
+{% else %}
+<a href="{% url 'login_page' %}"  style=" margin-right:400px;" >log in</a>
+{% endif %}

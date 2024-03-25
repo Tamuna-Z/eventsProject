@@ -87,6 +87,8 @@ class LoginView(View):
     form_class = CustomAuthenticationForm
 
     def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('event_list')
         form = self.form_class()
         return render(request, self.template_name, {'form': form})
 
@@ -103,6 +105,6 @@ class LoginView(View):
 class UserLogoutView(LoginRequiredMixin, RedirectView):
     url = reverse_lazy('login')
 
-    def get(self, request, *args, **kwargs):
-        logout(request)
-        return super().get(request, *args, **kwargs)
+    def get_redirect_url(self, *args, **kwargs):
+        logout(self.request)
+        return reverse_lazy('event_list')
