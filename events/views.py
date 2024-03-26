@@ -51,7 +51,6 @@ class UserRegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'register.html'
     success_url = reverse_lazy('event_list')
-
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
@@ -59,7 +58,6 @@ class UserRegisterView(CreateView):
 #
 def authenticate(username, password):
     pass
-
 
 class LoginView(View):
     template_name = 'events/login_register.html'
@@ -89,5 +87,3 @@ class UserLogoutView(LoginRequiredMixin, RedirectView):
         return reverse_lazy('event_list')
 
 
-# class EventRSVPView:
-#     pass
