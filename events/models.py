@@ -7,6 +7,7 @@ class Event(models.Model):
     location = models.CharField(max_length=100)
     date_time = models.DateTimeField()
 
+
     class Meta:
         ordering = ['-date_time']
 

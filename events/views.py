@@ -9,6 +9,8 @@ from django.views.generic import View, ListView, CreateView, RedirectView, Updat
 from django.urls import reverse_lazy
 from .models import Event, RSVP
 from .forms import EventForm, CustomUserCreationForm, CustomAuthenticationForm
+from django.http import HttpResponse
+
 
 class EventListView(ListView):
     model = Event
@@ -20,11 +22,9 @@ class Create_event(CreateView):
     form_class = EventForm
     template_name = 'events/event_form.html'
     context_object_name = 'createEvents'
-
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
-
     def get_success_url(self):
         return reverse_lazy('event_list')
 
@@ -33,41 +33,20 @@ class UpdateEvent(UpdateView):
     form_class = EventForm
     template_name = 'events/event_form.html'
     context_object_name = 'event'
-
     def form_valid(self, form):
         form.instance.creator = self.request.user
         return super().form_valid(form)
-
     def get_success_url(self):
         return reverse_lazy('event_list')
-
 class EventDeleteView(DeleteView):
     model = Event
     success_url = reverse_lazy('event_list')
     template_name = 'events/event_confirm_delete.html'
     context_object_name = 'event'
-
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
-
     def get_success_url(self):
         return reverse_lazy('event_list')
-
-
-
-
-class EventRSVPView(LoginRequiredMixin, CreateView):
-    model = RSVP
-    fields = '__all__'
-    success_url = reverse_lazy('event_list')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        form.instance.event = Event.objects.get(pk=self.kwargs['event_id'])
-        return super().form_valid(form)
-
-
-
 class UserRegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'register.html'
@@ -108,3 +87,7 @@ class UserLogoutView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         logout(self.request)
         return reverse_lazy('event_list')
+
+
+# class EventRSVPView:
+#     pass
