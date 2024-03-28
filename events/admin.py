@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Event, RSVP
+from .models import Event, Comments
 
 admin.site.register(Event)
-admin.site.register(RSVP)
+admin.site.register(Comments)
+
 
 
 
