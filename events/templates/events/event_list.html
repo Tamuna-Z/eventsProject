@@ -1,25 +1,20 @@
 {% extends 'main.html' %}
 {% block content %}
-<div style="margin-left:400px;">
-    <h1>Welcome Events Page</h1>
 
-<div style="margin-bottom:30px;">
-    <a href="{% url 'create_event' %}" style="font-size:24px; ">Create Event</a><br><br>
-
-
-</div>
-
-</div>
+    <h1 >Welcome Events Page</h1>
+    <a href="{% url 'create_event' %}" style="font-size:24px;">Create Event</a><br><br><hr>
 
 {% for event in events %}
-    <div style="background-color: pink; width: 500px; padding:20px; margin:0 auto;" >
-        <small style=" font-size:22px;">{{ event.title }}</small><br>
+    <div style="background-color: pink; padding:10px;width: 600px; margin:0 auto;" >
+        <small style=" font-size:22px;  ">{{ event.title }}</small><br><br>
         <small style=" font-size:18px;">{{ event.description}}</small><br>
         <small style=" font-size:18px;">{{ event.location}}</small><br>
         <small>{{ event.date_time}}</small><br><br>
         <a href="{% url 'update_event' event.pk %}">Update Event</a><br><br>
-        <a href="{% url 'delete_event' event.pk %}">delete Event</a>
+
+        <a href="{% url 'delete_event' event.pk %}">delete Event</a><br><br
     </div><hr>
 {% endfor %}
 
-{% endblock content %}
+{% endblock %}
+

@@ -8,8 +8,6 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ['title', 'description', 'location', 'date_time']
 
-class RSVPForm(forms.Form):
-    pass
 class CustomUserCreationForm(UserCreationForm):
     pass
 

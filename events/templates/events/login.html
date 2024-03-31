@@ -1,0 +1,21 @@
+
+{% extends 'main.html' %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<form action="{% url 'logout' %}" method="post">
+  {% csrf_token %}
+  <p>Username</p>
+        <input type="text" name="username" placeholder="user name">
+  <p>Password</p>
+        <input type="password" name="password" placeholder="password">
+  <button type="submit">Logout</button>
+</form>
+{% else %}
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+{% endif %}
+{% endblock content %}

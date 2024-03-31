@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>Welcome event Feedback page</h1>
+{% for feedback in feedback_list %}
+<div style="background-color: pink; padding:10px;width: 600px; height:70px;" >
+    <small>Event: {{ feedback.event }}</small><br>
+    <small>Feedback: {{ feedback.body }}</small><br>
+    <small>Created: {{ feedback.created_at }}</small><br>
+    <br>
+</div>
+{% empty %}
+    <p>No feedback available.</p>
+{% endfor %}
+{% endblock %}
