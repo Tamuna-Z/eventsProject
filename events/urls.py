@@ -1,13 +1,13 @@
 
 from django.contrib.auth.views import LoginView
 from django.urls import path
-from .views import EventListView, Create_event, UserLoginView, UserLogoutView, UpdateEvent, EventDeleteView, \
+from .views import EventListView, Create_event, UserLoginView, UserLogoutView,  \
     EventFeedbackView, Home, UpdateEvent, EventDeleteView, EventCategoryView, EventAttendeeView
 
 
 
 urlpatterns = [
-    path('login/', UserLoginView.as_view(template_name='events/login.html'), name='login'),
+    path('login/', UserLoginView.as_view(), name='login'),
     path('', Home.as_view(), name='home'),
     path('event_list/', EventListView.as_view(), name='event_list'),
     path('event_feedback/', EventFeedbackView.as_view(), name='event_feedback'),
