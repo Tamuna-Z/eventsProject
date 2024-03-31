@@ -1,0 +1,25 @@
+{% load static %}
+<div>
+    <div>
+      {% if user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          <li>Welcome, {{ user.username }}!</li>
+          {% else %}
+          <li style="list-style:none;"><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+</div>
+
+    <div>
+
+
+    <ul style=" display:flex; justify-content:space-around; list-style:none; background-color:pink; height:70px;align-items:center;">
+         <img src="{% static 'images/images.png' %}" alt="Cover Photo" width="100px" ">
+        <li style=" margin-right:20px; font-size:25px;"><a href="{% url 'home' %}">home</a></li>
+        <li style=" margin-right:20px;font-size:25px;"><a href="{% url 'event_list' %}">Events</a></li>
+        <li style=" margin-right:20px; font-size:25px;;"><a href="{% url 'event_category' %}">Category</a></li>
+        <li style=" margin-right:20px; font-size:25px;;"><a href="{% url 'event_attendee' %}">Attendee</a></li>
+        <li style=" margin-right:20px;font-size:25px;"><a href="{%url 'event_feedback' %}">Feedback</a></li>
+    </ul>
+    </div>
+</div>
+

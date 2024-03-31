@@ -1,0 +1,30 @@
+
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<!--<h1>welcome to homepage</h1>-->
+
+<style>
+    .cover-photo {
+        position: relative;
+        height: 500px;
+        overflow: hidden;
+    }
+
+    .cover-photo img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    h1 {
+        margin-top: 30px;
+    }
+</style>
+
+<div class="cover-photo">
+    <img src="{% static 'images/download.jpg' %}" alt="Cover Photo">
+</div>
+{% endblock %}

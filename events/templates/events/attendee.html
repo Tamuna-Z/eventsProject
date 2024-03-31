@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>attendee</h1>
+
+{% for attendee in attendee_list %}
+<div style="background-color: pink; padding:10px;width: 600px; height:100px;" >
+    <small>Username: {{ attendee.user.username }}</small><br>
+    <small>event: {{ attendee.events_attending  }}</small><br>
+</div>
+    <br>
+{% empty %}
+    <p>No feedback available.</p>
+{% endfor %}
+{% endblock %}
