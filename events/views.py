@@ -33,6 +33,8 @@ class UserLoginView(LoginView):
             messages.error(self.request, 'Invalid username or password.')
             return super().form_invalid(form)
 
+
+
 class EventListView(LoginRequiredMixin, ListView):
     model = Event
     queryset = Event.objects.all()
