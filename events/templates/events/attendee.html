@@ -4,11 +4,16 @@
 
 {% for attendee in attendee_list %}
 <div style="background-color: pink; padding:10px;width: 600px; height:100px;" >
-    <small>Username: {{ attendee.user.username }}</small><br>
-    <small>event: {{ attendee.events_attending  }}</small><br>
+    <small style="font-size:20px;">Username: {{ attendee.user.username }}</small><br>
+    <small>Events Attending:</small><br>
+    <ul>
+        {% for event in attendee.events_attending.all %}
+            <li style="font-size:16px; list-style:none;">{{ event }}</li>
+        {% endfor %}
+    </ul>
 </div>
-    <br>
+<br>
 {% empty %}
-    <p>No feedback available.</p>
+    <p>No attendees available.</p>
 {% endfor %}
 {% endblock %}

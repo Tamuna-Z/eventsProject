@@ -2,12 +2,12 @@
 {% block content %}
 <h1>Welcome event Feedback page</h1>
 {% for feedback in feedback_list %}
-<div style="background-color: pink; padding:10px;width: 600px; height:70px;" >
-    <small>Event: {{ feedback.event }}</small><br>
-    <small>Feedback: {{ feedback.body }}</small><br>
+<div style="background-color: pink; padding:10px;width: 600px; height:130px;" >
+    <small style="font-size:25px;">Event: {{ feedback.event }}</small><br><br>
+    <small style="font-size:15px;">Feedback: {{ feedback.body }}</small><br><br>
     <small>Created: {{ feedback.created_at }}</small><br>
-    <br>
-</div>
+    <br><br> <br>
+</div><br>
 {% empty %}
     <p>No feedback available.</p>
 {% endfor %}
